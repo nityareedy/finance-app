@@ -28,11 +28,27 @@
                 </ul>
                 <ul class="navbar-nav">
                     {% if current_user.is_authenticated %}
-                    <li class="nav-item">
-                        <span class="nav-link">Welcome, {{ current_user.username }}</span>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="{{ url_for('auth.logout') }}">Logout</a>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown">
+                            <img src="{{ url_for('static', filename='profile_pics/' + current_user.profile_picture) }}" 
+                                 alt="Profile" 
+                                 class="rounded-circle me-2"
+                                 style="width: 32px; height: 32px; object-fit: cover;">
+                            {{ current_user.username }}
+                        </a>
+                        <ul class="dropdown-menu dropdown-menu-end">
+                            <li>
+                                <form action="{{ url_for('auth.update_profile') }}" method="POST" enctype="multipart/form-data" class="p-3">
+                                    <div class="mb-3">
+                                        <label for="profile_picture" class="form-label">Update Profile Picture</label>
+                                        <input type="file" class="form-control" id="profile_picture" name="profile_picture" accept="image/*">
+                                    </div>
+                                    <button type="submit" class="btn btn-primary btn-sm">Update</button>
+                                </form>
+                            </li>
+                            <li><hr class="dropdown-divider"></li>
+                            <li><a class="dropdown-item" href="{{ url_for('auth.logout') }}">Logout</a></li>
+                        </ul>
                     </li>
                     {% else %}
                     <li class="nav-item">

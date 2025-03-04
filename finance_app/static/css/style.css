@@ -40,6 +40,18 @@ body {
     border-radius: 0.25rem;
 }
 
+/* Profile Picture Styles */
+.navbar .profile-picture {
+    width: 32px;
+    height: 32px;
+    object-fit: cover;
+    border: 2px solid rgba(255,255,255,0.5);
+}
+
+.dropdown-menu {
+    min-width: 250px;
+}
+
 /* Custom scrollbar */
 ::-webkit-scrollbar {
     width: 8px;
