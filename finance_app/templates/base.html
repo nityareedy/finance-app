@@ -30,10 +30,17 @@
                     {% if current_user.is_authenticated %}
                     <li class="nav-item dropdown">
                         <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown">
+                            {% if current_user.profile_picture %}
                             <img src="{{ url_for('static', filename='profile_pics/' + current_user.profile_picture) }}" 
                                  alt="Profile" 
                                  class="rounded-circle me-2"
                                  style="width: 32px; height: 32px; object-fit: cover;">
+                            {% else %}
+                            <img src="{{ url_for('static', filename='profile_pics/default.jpg') }}" 
+                                 alt="Profile" 
+                                 class="rounded-circle me-2"
+                                 style="width: 32px; height: 32px; object-fit: cover;">
+                            {% endif %}
                             {{ current_user.username }}
                         </a>
                         <ul class="dropdown-menu dropdown-menu-end">
