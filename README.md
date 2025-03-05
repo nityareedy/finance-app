@@ -56,7 +56,7 @@ export FLASK_ENV=development
 flask run
 ```
 
-3. Open your web browser and navigate to `http://localhost:5000`
+3. Open your web browser and navigate to `http://127.0.0.1:5000`
 
 ## Usage
 
